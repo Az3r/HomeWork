@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+  background-image: url("./Image/background.jpg");
+  margin:20px;
+}
+
+section {
+  display: -webkit-flex;
+  display: flex;
+  padding: 80px;
+}
+nav {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #ccc;
+  padding: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+  background-align: center;
+}
+
+article {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+footer {
+  background-color: #99FFFF;
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  section {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+
+
+<header>
+  <h2 style="color:Tomato">Trương Văn Tú - HCMUS</h2>
+</header>
+
+<section>
+  <nav>
+    <ul>
+		<img src="./Image/tumeo.jpg" style="width:240px;height:320px;image-align: center;"></img>
+    </ul>
+  </nav>
+  <article>
+    <h1>Họ tên: Trương Văn tú</h1>
+    <h1>MSSV: 1712863</h1>
+	<h1>Ngày sinh: 21-05-1999</h1>
+	<h1>Emai: 1712863@student.hcmus.edu.vn</h1>
+	<h1>SĐT: 0978966563</h1>
+    <h1>Khoa: Công nghệ thông tin</h1>
+  </article>
+</section>
+
+<footer>
+  <p><a href="../../1712863_1712872_1712875.html">Quay lại</a></p>
+</footer>
+
+</body>
+</html>
