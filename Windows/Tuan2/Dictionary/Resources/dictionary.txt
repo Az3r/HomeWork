@@ -1,0 +1,20 @@
+﻿vn,VietNam,Việt Nam
+my,Malaysia,Mã Lai
+ne,Niger,Ni-giê
+nl,Netherland,Hà Lan
+no,Norway,Na-uy
+nz,New Zealand,Niu Di-lân
+pe,Peru,Pê-ru
+ph,Philippines,Phi-líp-pin
+pl,Poland,Ba Lan
+pt,Portugal,Bồ Đào Nha
+ro,Romania,Ru-ma-ni
+rs,Serbia,Séc-bi
+ru,Russia,Nga
+rw,Rwanda,Ru-an-đa
+se,Sweden,Thụy Điển
+th,Thailand,Thái Lan
+tr,Turkey,Thổ Nhĩ Kỳ
+tw,Taiwan,Đài Loan
+us,United States,Mỹ
+cn,China,Trung Quốc
