@@ -16,19 +16,20 @@
             <Setter Property="Foreground" Value="Blue"/>
             <Setter Property="Text" Value="Hello"/>
         </Style>
+        
         <Style TargetType="Border">
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderBrush" Value="Red"/>
+            <Setter Property="BorderBrush" Value="PaleVioletRed"/>
             <Setter Property="BorderThickness" Value="5"/>
             <Setter Property="Background" Value="Transparent"/>
         </Style>
         <Style TargetType="Border" BasedOn="{StaticResource {x:Type Border}}" x:Key="ChildBorder">
-            <Setter Property="BorderBrush" Value="Aqua"/>
+            <Setter Property="BorderBrush" Value="Orange"/>
         </Style>
         
     </Window.Resources>
     
-    <Grid Background="AntiqueWhite">
+    <Grid Background="CadetBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="4*"/>
@@ -96,7 +97,7 @@
             </Border>
         </Grid>
 
-        <Grid Grid.Row="1" Margin="5" Background="AliceBlue">
+        <Grid Grid.Row="1" Margin="5" Background="CadetBlue">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
