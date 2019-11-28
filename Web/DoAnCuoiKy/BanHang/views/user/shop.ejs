@@ -1,0 +1,100 @@
+<br><br>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Sản phẩm</h2>
+                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="product-mat-kinh.html">Mắt kính</a></h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="product-vest.html">Vest</a></h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="product-mu-non.html">Mũ nón</a></h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="product-trang-suc.html">Trang sức</a></h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="product-quan-ao.html">Quần áo</a></h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="product-tui-xach.html">Túi xách</a></h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="product-giay.html">Giày</a></h4>
+                            </div>
+                        </div>
+                    </div><!--/category-products-->
+
+                    <div class="brands_products"><!--brands_products-->
+                        <h2>Thương hiệu</h2>
+                        <div class="brands-name">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="brands-viet-tien.html"> <span class="pull-right">(50)</span>Việt tiến</a></li>
+                                <li><a href="brands-owen.html"> <span class="pull-right">(56)</span>Owen</a></li>
+                                <li><a href="brands-5-the-way.html"> <span class="pull-right">(27)</span>5 the way</a></li>
+                                <li><a href="brands-4men.html"> <span class="pull-right">(32)</span>4Men</a></li>
+                                <li><a href="brands-juno.html"> <span class="pull-right">(5)</span>Juno</a></li>
+                                <li><a href="brands-bwm.html"> <span class="pull-right">(9)</span>BWM</a></li>
+                            </ul>
+                        </div>
+                    </div><!--/brands_products-->
+                    <div class="brands_products"><!--brands_products-->
+                        <h2>Phân loại</h2>
+                        <div class="brands-name">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="catolory-nam.html"> <span class="pull-right">(50)</span>Thời trang nam</a></li>
+                                <li><a href="catolory-nu.html"> <span class="pull-right">(56)</span>Thời trang nữ</a></li>
+                                
+                                <li><a href="catolory-tre-em.html"> <span class="pull-right">(32)</span>Trẻ em</a></li>
+                            </ul>
+                        </div>
+                    </div><!--/brands_products-->
+
+                    <div class="shipping text-center"><!--shipping-->
+                        <img src="user/images/home/shipping.jpg" alt="" />
+                    </div><!--/shipping-->
+
+                </div>
+            </div>
+
+            <div class="col-sm-9 padding-right">
+                   <div class="features_items">
+                            <h2 class="title text-center">Danh sách sản phẩm</h2>
+                            <% danhsach.rows.forEach(function(sp){%>
+                            <div class="col-sm-4">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img height="240" width="240" src= <%= sp.imgPath %> />
+                                            <h2><%= sp.price%> vnd</h2>
+                                            <a href= <%= sp.link %>><p class="linkproduct" ><%= sp.name%></p></a>
+        
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }); %>
+                    </div>               
+            </div>
+        </div>
+    </div>
+</section>
