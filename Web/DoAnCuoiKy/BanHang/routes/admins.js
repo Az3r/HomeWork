@@ -1,30 +1,77 @@
 var express = require('express');
 var router = express.Router();
+let passport = require('passport');
+
+let regisTemplate = require('../controller/adminRegisterController');
+let login_outTemplate = require('../controller/adminLogin_outController');
+let customerTemplate = require('../controller/adminCustomerController');
+let productTemplate = require('../controller/adminProductController');
+let orderTemplate = require('../controller/adminOrderController');
+
+let regisControl = new regisTemplate();
+let login_outControl = new login_outTemplate();
+let customerControl = new customerTemplate();
+let productControl = new productTemplate();
+let orderControl = new orderTemplate();
+
 
 /* GET admins listing. */
 router.get('/', function(req, res, next) {
-    res.render('admin/dashboard', { title: 'Trang chủ',layout: 'admin' });
+   res.redirect('/admin/dashboard.html');
 });
+
+router.get('/dashboard.html', function(req, res, next){
+    if(req.isAuthenticated())
+        res.render('admin/dashboard', { title: 'Trang chủ',layout: 'admin', adminName: req.user.name });
+    else
+        res.redirect('/admin/login.html');
+});
+
+router.post('/login.html', function(req, res, next){
+    login_outControl.loginAccount(req, res, next);   
+});
+
+
+
+router.get('/register.html', function(req, res, next) {
+    regisControl.showRegister(req, res, next);
+});
+
+router.post('/register.html', function(req, res, next){
+    regisControl.register(req, res, next);
+});
+
 router.get('/user.html', function(req, res, next) {
-    res.render('admin/user', { title: 'Khách hàng',layout: 'admin' });
+    customerControl.showAllUserAcc(req, res, next);
 });
+
 router.get('/edit-user.html', function(req, res, next) {
-    res.render('admin/edit-user', { title: 'Chi tiết người dùng',layout: 'admin' });
+    customerControl.editUserAccount(req, res, next);
 });
+
 router.get('/order.html', function(req, res, next) {
-    res.render('admin/order', { title: 'Đơn hàng',layout: 'admin' });
+    orderControl.showAllOrder(req, res, next);
 });
 
 router.get('/edit-order.html', function(req, res, next) {
-    res.render('admin/edit-order', { title: 'Chi tiết đơn hàng',layout: 'admin' });
+    orderControl.editOrder(req, res, next);
 });
 router.get('/edit-order-1.html', function(req, res, next) {
-    res.render('admin/edit-order-1', { title: 'Chi tiết đơn hàng',layout: 'admin' });
+    orderControl.editOrder(req, res, next);
 });
 router.get('/sales.html', function(req, res, next) {
-    res.render('admin/sales', { title: 'Chi tiết đơn hàng',layout: 'admin' });
+    productControl.showSales(req, res, next);
 });
 router.get('/top.html', function(req, res, next) {
-    res.render('admin/top', { title: 'Chi tiết đơn hàng',layout: 'admin' });
+    productControl.topProduct(req, res, next);
 });
+
+router.get('/login.html', function(req, res, next) {
+    login_outControl.showLogin(req, res, next);
+   
+});
+router.get('/logout.html', function(req, res, next){
+    login_outControl.logoutAccount(req, res, next);
+});
+
 module.exports = router;
