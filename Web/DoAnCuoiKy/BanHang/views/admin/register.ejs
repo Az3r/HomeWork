@@ -1,0 +1,136 @@
+
+<!--<div class="container">
+    <div class="row main">
+        <div class="main-login main-center">
+            <form class="" method="POST" action="/admin/register.html">
+                <p><%= notification %></p>
+                <div class="form-group">
+                    <label for="name" class="cols-sm-2 control-label">Tên của bạn</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="name" id="name"  placeholder="Tên của bạn"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label">Email</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input type="email" class="form-control" name="email" id="email"  placeholder="Email"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username" class="cols-sm-2 control-label">Tên đăng nhập</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="username" id="username"  placeholder="Tên đăng nhập" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="cols-sm-2 control-label">Mật khẩu</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="password" id="password"  placeholder="Mật khẩu" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm" class="cols-sm-2 control-label">Nhập lại mật khẩu</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="password_confirm" id="confirm"  placeholder="Nhập lại mật khẩu" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm" class="cols-sm-2 control-label">Mật khẩu chủ tịch công ty</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="root_admin_pass" id="confirm"  placeholder="Mật khẩu" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <button type="submit" id="button" class="btn btn-primary center-block" style="color: #e4d9d9;background: #00ACEE">Đăng ký</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>-->
+<div class="container" style="background: #f2f2f2;">
+    <div class="col-sm-12">
+
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+                <h3>Thông tin tài khoản</h3>
+                
+                <form class="form-horizontal" role="form" method="POST" action="/admin/register.html">
+                    <p><%= notification%></p>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Họ và tên đệm:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" name="lastName" id="lastname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Tên:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text"  name="firstName" id="firstName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Email:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="email"  name="email" id="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Tên đăng nhập:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text"  name="username" id="username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Mật khẩu:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="password"  name="password" id="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Nhập lại mật khẩu:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="password"  name="password_confirm" id="password_confirm">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Mật khẩu quản trị:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="password"  name="root_admin_pass" id="root_admin_pass">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-8">
+                            <button type="submit" class="btn btn-primary">Tạo tài khoản </button>
+                       </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>

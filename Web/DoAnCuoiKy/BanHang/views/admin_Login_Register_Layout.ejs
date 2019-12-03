@@ -1,4 +1,13 @@
-<header id="header"><!--header-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%include element/user/headers.ejs%>
+  <%include element/user/css.ejs%>
+</head>
+<!--/head-->
+
+<body>
+  <header id="header"><!--header-->
     <div class="header_top"><!--header_top-->
         <div class="container">
             <div class="row">
@@ -33,16 +42,7 @@
                         <a href="../index.html"><img src="../user/images/home/logo.png" alt="" /></a>
                     </div>
                 </div>
-                <div class="col-md-8 clearfix">
-                    <div class="shop-menu clearfix pull-right">
-                        <ul class="nav navbar-nav">
-                            <li><a href="../acount.html"><i class="fa fa-user"></i> Tài khoản</a></li>
-                            <li><a href="../cart.html"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
-                            <li><a href="../login.html"><i class="fa fa-lock"></i> Đăng nhập</a></li>
-                            <li><a href="../register.html"><i class="fa fa-registered"></i> Đăng ký</a></li>
-                        </ul>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div><!--/header-middle-->
@@ -91,3 +91,10 @@
         </div>
     </div><!--/header-bottom-->
 </header><!--/header-->
+    <div style="background: #99ffe6">
+      <%-body%>
+    </div>
+    <%include element/user/footer.ejs%>
+    <%include element/user/scripts.ejs%>
+  </body>
+</html>

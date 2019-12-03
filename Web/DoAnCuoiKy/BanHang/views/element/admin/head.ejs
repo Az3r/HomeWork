@@ -4,7 +4,7 @@
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
                     <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
-                    <div class="sidebar-brand-text mx-3"><span>Quản trị</span></div>
+                    <div class="sidebar-brand-text mx-3"><span>Chào <%= adminName%></span></div>
                 </a>
                 <div class="btn-toolbar">
                     <div class="btn-group" role="group"></div>
@@ -80,7 +80,11 @@
                             </li>
                             <li class="nav-item dropdown no-arrow mx-1" role="presentation">
                                 <div class="nav-item dropdown no-arrow">
-                                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><span class="badge badge-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></button>
+                                    
+                                        <label><a href="/admin/register.html">register</a><i class="fas fa-bell fa-fw"></i></label>
+                                        <label><a href="/admin/logout.html">logout</a><i class="fas fa-bell fa-fw"></i></label>
+                                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true" type="button"><span class="badge badge-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></button>
+                                    
                                     <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in" role="menu">
                                         <h6 class="dropdown-header">alerts center</h6>
                                         <a class="d-flex align-items-center dropdown-item" href="#">

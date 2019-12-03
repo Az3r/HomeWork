@@ -2,7 +2,17 @@
 <div class="container">
     <div class="row main">
         <div class="main-login main-center">
-            <form class="" method="post" action="#">
+            <form class="" method="POST" action="register.html">
+                <p><%= notification %></p>
+                <div class="form-group">
+                    <label for="name" class="cols-sm-2 control-label">Họ của bạn</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="lastname" id="lastname"  placeholder="Họ của bạn"/>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="name" class="cols-sm-2 control-label">Tên của bạn</label>
@@ -19,7 +29,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="email" id="email"  placeholder="Email"/>
+                            <input type="email" class="form-control" name="email" id="email"  placeholder="Email"/>
                         </div>
                     </div>
                 </div>
@@ -29,7 +39,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="username" id="username"  placeholder="Tên đăng nhập"/>
+                            <input type="text" class="form-control" name="username" id="username"  placeholder="Tên đăng nhập" required/>
                         </div>
                     </div>
                 </div>
@@ -39,7 +49,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="password" class="form-control" name="password" id="password"  placeholder="Mật khẩu"/>
+                            <input type="password" class="form-control" name="password" id="password"  placeholder="Mật khẩu" required/>
                         </div>
                     </div>
                 </div>
@@ -49,13 +59,13 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Nhập lại mật khẩu"/>
+                            <input type="password" class="form-control" name="password_confirm" id="confirm"  placeholder="Nhập lại mật khẩu" required/>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group ">
-                    <a href="#"type="button" id="button" class="btn btn-primary center-block" style="color: #0b0b0b;background: #00ACEE">Đăng ký</a>
+                    <button type="submit" id="button" class="btn btn-primary center-block" style="color: #e4d9d9;background: #00ACEE">Đăng ký</button>
                 </div>
             </form>
         </div>
