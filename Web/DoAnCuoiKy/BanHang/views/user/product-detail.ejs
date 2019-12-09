@@ -81,7 +81,8 @@
                     <div class="col-sm-5">
                         <div class="view-product">
                             <img height="350" width="280" src= <%= "../" + sp.imgPath %> />
-                            <h3>ZOOM</h3>
+                            
+                            <h3><%= sp.view %> views</h3>
                         </div>
                        
 
@@ -91,16 +92,16 @@
                             
                             <img src="../user/images/product-details/new.jpg" class="newarrival" alt="" />
                             <h2> <%= sp.name%></h2>
-                            <p>Mã Sản phẩm: <%= sp.productID%></p>
+                            <p>Mã Sản phẩm: <%= sp.id%></p>
                             <img src="../user/images/product-details/rating.png" alt="" />
                             <span>
 									<span>Giá: <%= sp.price%></span>
 									<label>Số lượng: <%= sp.amount%></label>
 									<!--<input type="text" value="3" />-->
-									<button type="button" class="btn btn-fefault cart">
+									<a href= <%= '/addcart?id=' + sp.id %> ><button type="button" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
 										Thêm vào giỏ hàng
-									</button>
+									</button></a>
 							</span>
                             <p><%= sp.description%></p>
                             <p><b>Danh mục:</b> <%= sp.tag%>, <%= sp.catalog%></p>
@@ -120,9 +121,64 @@
                     </div>
                     <div class="tab-content">
                         <div class="tab-pane fade" id="details" >
-                           <p>Hiện chưa có bình luận nào</p>
+                            <% if(comment.rowCount == 0) { %>
+                                <p>Hiện chưa có bình luận nào</p>
+                            <% } else { %>
+                                <%comment.rows.forEach(function(cmt){ %>
+                                    <p style="font-size: medium; "><i style="color: orange;" class="fa fa-user"></i><b>&nbsp<%= cmt.name %></b></p>
+                                    <textarea style="background: white;"><%= cmt.content %></textarea>
+                                    <br>
+                                <% }); %>
+                                <nav aria-label="Page navigation example" style="margin: 5px;">
+                                        <ul class="pagination">
+                                            <% if(currentPage > 1) { %>
+                                                <li class="page-item"><a class="page-link" href= <%= '/' + danhsach.rows[0].id + '?&page=' + (parseInt(currentPage) - 1)%> >Previous</a></li>
+                                            <% }else { %>
+                                                <li class="page-item"><a class="page-link" href= <%= '/' + danhsach.rows[0].id %> >Previous</a></li>
+                                            <% } %>    
+                                            <!------------------------------------------->
+                                            <% if(limitPage > 2) {%>
+                                                <% if(currentPage < limitPage - 2) { %>
+                                                    <li class="page-item"><a class="page-link" href= <%= '/' + danhsach.rows[0].id + '?&page='  + currentPage %> ><%= currentPage %></a></li>
+                                                <% }else { %>                                                           
+                                                    <li class="page-item"><a class="page-link" href= <%= '/' + danhsach.rows[0].id + '?&page=' + (parseInt(limitPage) - 2).toString() %> ><%= parseInt(limitPage) - 2 %></a></li>                               
+                                                <% } %>
+                                            <%} else{%>
+                                                <li class="page-item"><a class="page-link" href= <%= '/' + danhsach.rows[0].id + '?&page=1' %> >1</a></li>
+                                            <%}%>
+                
+                                             <!------------------------------------------->
+                                            <% if(limitPage > 2) {%>
+                                                <% if(currentPage < limitPage - 1) { %>
+                                                    <li class="page-item"><a class="page-link" href= <%= '/' + danhsach.rows[0].id + '?&page=' + (parseInt(currentPage) + 1).toString() %> ><%= parseInt(currentPage) + 1 %></a></li>
+                                                <% }else { %>
+                                                    <li class="page-item"><a class="page-link" href= <%= '/' + danhsach.rows[0].id + '?&page=' + (parseInt(limitPage) - 1).toString() %> ><%= parseInt(limitPage) - 1 %></a></li>
+                                                <% } %>
+                                            <% }%>
+                
+                                             <!------------------------------------------->
+                                            <% if(limitPage > 1) { %>
+                                                <% if(currentPage < limitPage - 2) { %>
+                                                    <li class="page-item"><a class="page-link" href= <%= '/' + danhsach.rows[0].id + '?&page=' + (parseInt(currentPage)  + 2).toString() %> ><%= parseInt(currentPage) + 2 %></a></li>
+                                                <% }else { %>
+                                                    <li class="page-item"><a class="page-link" href= <%= '/' + danhsach.rows[0].id + '?&page=' + limitPage %> ><%= limitPage%></a></li>
+                                                <% } %>
+                                            <% } %>
+                                             <!------------------------------------------->
+                                            <% if(currentPage < limitPage) { %>
+                                                
+                                                <li class="page-item"><a class="page-link" href= <%= '/' + danhsach.rows[0].id + '?&page=' + (parseInt(currentPage) + 1)%> >Next</a></li>                            
+                                            <% }else { %>
+                                                
+                                                <li class="page-item"><a class="page-link" href= <%= '/' + danhsach.rows[0].id + '?&page=' + limitPage %> >Next</a></li>
+                                            <% } %>
+                                          
+                                        </ul>
+                                      </nav>
+                            <% } %>
+                            
                         </div>
-                        <div class="tab-pane fade active in" id="reviews" >
+                        <div class="tab-pane fade  active in" id="reviews" >
                             <div class="col-sm-12">
                                 <ul>
                                     <li><a href=""><i class="fa fa-user"></i>HCM</a></li>
@@ -131,15 +187,24 @@
                                 </ul>
                                 <p></p>
                                 <p><b>Viết đánh giá của bạn</b></p>
-
-                                <form action="#">
+                                <form method="POST" action= <%='/' + danhsach.rows[0].id %> > 
 										<span>
-											<input type="text" placeholder="Tên của bạn"/>
-											<input type="email" placeholder="Địa chỉ Email"/>
+                                            <% if(unameauto !== '') { %>
+                                                <input type="text" name='username' placeholder="Tên đăng nhập của bạn" required value= <%= unameauto %> />
+                                            <% } else {%>
+                                                <input type="text" name='username' placeholder="Tên đăng nhập của bạn" required/>
+                                            <% } %>
+
+                                            <% if(emailauto !== '') { %>
+                                                <input type="email" name='email' placeholder="Địa chỉ Email" required value= <%= emailauto %> />
+                                            <% } else {%>
+                                                <input type="email" name='email' placeholder="Địa chỉ Email" required/>
+                                            <% } %>
+                                            
 										</span>
-                                    <textarea name="" ></textarea>
+                                    <textarea name="content" required></textarea>
                                     <b>Rating: </b> <img src="../user/images/product-details/rating.png" alt="" />
-                                    <button type="button" class="btn btn-default pull-right">
+                                    <button type="submit" class="btn btn-default pull-right">
                                         Gửi
                                     </button>
                                 </form>
@@ -165,7 +230,7 @@
                                                         <img height="150" width="100" src= <%= "../" + sp.imgPath %> />
                                                         <h2><%= sp.price%> vnd</h2>
                                                         <a href= <%= "../" + sp.id  %>><p class="linkproduct" ><%= sp.name%></p></a>    
-                                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                                                        <a class="btn btn-default add-to-cart" href= <%= '/addcart?id=' + sp.id %> ><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                                                     </div>
             
                                                 </div>
@@ -187,7 +252,7 @@
                                                         <img height="150" width="100" src= <%= "../" + splienquan.rows[j].imgPath %> />
                                                         <h2><%= splienquan.rows[j].price%> vnd</h2>
                                                         <a href= <%= "../" + splienquan.rows[j].id %> ><p class="linkproduct" ><%= splienquan.rows[j].name%></p></a>    
-                                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                                                        <a class="btn btn-default add-to-cart" href= <%= '/addcart?id=' + splienquan.rows[j].id %> ><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                                                     </div>
             
                                                 </div>

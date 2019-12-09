@@ -5,6 +5,8 @@
             <h2>Giỏ Hàng</h2>
         </div>
             <div class="table-responsive cart_info">
+                <% if(danhsach.rowCount > 0) {%> 
+                    <form action="/updateCart" method="POST">
                 <table class="table table-condensed">
                     <thead>
                     <tr class="cart_menu">
@@ -16,111 +18,49 @@
                         <td></td>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="../user/images/cart/one.png" alt=""></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><a href="">Váy nữ siêu đẹp</a></h4>
-                            <p>Mã sản phẩm: 1089772</p>
-                        </td>
-                        <td class="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
-                            </div>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">$59</p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="../user/images/cart/two.png" alt=""></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><a href="">Váy nữ siêu đẹp</a></h4>
-                            <p>Mã sản phẩm: 1089772</p>
-                        </td>
-                        <td class="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
-                            </div>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">$59</p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="../user/images/cart/three.png" alt=""></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><a href="">Váy nữ siêu đẹp</a></h4>
-                            <p>Mã sản phẩm: 1089772</p>
-                        </td>
-                        <td class="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
-                            </div>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">$59</p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">&nbsp;</td>
-                        <td colspan="2">
-                            <table class="table table-condensed total-result">
-                                <tr>
-                                    <td>Tổng tiền</td>
-                                    <td>$59</td>
-                                </tr>
-                                <tr class="shipping-cost">
-                                    <td>Phí giao hàng</td>
-                                    <td>Miễn phí</td></td>
-                                </tr>
-                                <tr>
-                                    <td>Tổng</td>
-                                    <td><span>$61</span></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
+                    <tbody>     
+                                     
+                    <% danhsach.rows.forEach(function(sp){%>
+                        <tr>
+                            
+                            <td class="cart_product">
+                                <a href=""><img width="110" height="110" src= <%= sp.imgPath %> ></a>
+                            </td>
+                            <td class="cart_description">
+                                <h4><a href= <%= '/' + sp.id %> ><%= sp.name%></a></h4>
+                                <p>Mã sản phẩm: <%= sp.id%></p>
+                            </td>
+                            <td class="cart_price">
+                                <p><%= sp.price %></p>
+                            </td>
+                            <td class="cart_quantity">
+                                <div class="cart_quantity_button">                              
+                                    <input class="cart_quantity_input" autocomplete="off" size="2" type="number"  min="0" placeholder= <%= sp.number %> name=<%= 'quantity' + sp.id %> >               
+                                </div>
+                            </td>
+                            <td class="cart_total">
+                                <p class="cart_total_price"><%= parseInt(sp.price) * parseInt(sp.number)%></p>
+                            </td>
+                            <td class="cart_delete">
+                                <a class="cart_quantity_delete" href= <%= '/addcart?id=' + sp.id + '&delete=1' %> ><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                    <% }); %>
                     </tbody>
                 </table>
-                <div class="col-sm-4"></div>
                 <div class="col-sm-4">
-                    <a href="../checkout.html"><button class="btn btn-primary text-center">Thanh toán</button></a>
-                </div>
+                    <button type="submit" class="btn btn-primary text-center">Cập nhật</button>
+                </div>                
+                </form>   
+                <div class="col-sm-4">
+                    <a href="/checkout.html"><button type="button" class="btn btn-primary text-center">Xuất hóa đơn</button></a>
+                 </div>         
+                <% } else {%>
+                    <h3>Hiện không có sản phẩm nào trong giỏ</h3>
+                <% } %>
                 <div class="col-sm-4"></div><br><br><br><br>
             </div>
-        </div>
+        
     </div>
 </section>
 

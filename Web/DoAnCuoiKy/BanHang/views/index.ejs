@@ -96,17 +96,17 @@
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="search-container">
-                        <form action="product.html">
-                            <input style="background: #1adeed; padding-top: 3%; padding-bottom: 3%" type="text" placeholder="Tìm kiếm">
-                            <a href="../product.html"><button style=" background: #1cc88a; padding-top: 1.2%; padding-bottom: 1.3%; padding-left: 4%; padding-right: 4%"><i class="fa fa-search"></i></button></a>
-                        </form>
-                    </div>
-            </div>
+                        <div class="search-container">
+                            <form action="/search.html" method="GET">
+                                <input style="background: whitesmoke; padding-top: 3%; padding-bottom: 3%" type="text" name="searchBlock" placeholder="Tìm kiếm">
+                                <button type="submit" style=" background: orange; padding-top: 1.2%; padding-bottom: 1.3%; padding-left: 4%; padding-right: 4%"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div> 
+                </div>
         </div>
     </div><!--/header-bottom-->
-</header><!--/header-->
-    <div style="background: #99ffe6">
+</header><!--/header #99ffe6-->
+    <div style="background:whitesmoke">
       <%-body%>
     </div>
     <%include element/user/footer.ejs%>

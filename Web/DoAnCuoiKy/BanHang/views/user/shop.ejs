@@ -4,41 +4,43 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="left-sidebar">
+                    <h1 style="margin-top: 0px; text-align: center;">LỌC SẢN PHẨM</h1>
+                    <br>
                     <h2>Sản phẩm</h2>
                     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="../product/mat-kinh.html">Mắt kính</a></h4>
+                                <h4 class="panel-title"><a href= <%= originURL + 'product=1' + brandParam + catalogParam %> >Mắt kính</a></h4>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="../product/vest.html">Vest</a></h4>
+                                <h4 class="panel-title"><a href= <%= originURL + 'product=2' + brandParam + catalogParam %> >Vest</a></h4>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="../product/mu-non.html">Mũ nón</a></h4>
+                                <h4 class="panel-title"><a href= <%= originURL + 'product=3' + brandParam + catalogParam %> >Mũ nón</a></h4>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="../product/trang-suc.html">Trang sức</a></h4>
+                                <h4 class="panel-title"><a href= <%= originURL + 'product=4' + brandParam + catalogParam %> >Trang sức</a></h4>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="../product/quan-ao.html">Quần áo</a></h4>
+                                <h4 class="panel-title"><a href= <%= originURL + 'product=5' + brandParam + catalogParam %> >Quần áo</a></h4>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="../product/tui-xach.html">Túi xách</a></h4>
+                                <h4 class="panel-title"><a href= <%= originURL + 'product=6' + brandParam + catalogParam %> >Túi xách</a></h4>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="../product/giay.html">Giày</a></h4>
+                                <h4 class="panel-title"><a href= <%= originURL + 'product=7' + brandParam + catalogParam %> >Giày</a></h4>
                             </div>
                         </div>
                     </div><!--/category-products-->
@@ -47,12 +49,12 @@
                         <h2>Thương hiệu</h2>
                         <div class="brands-name">
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="../brands/viet-tien.html"> <span class="pull-right">(50)</span>Việt tiến</a></li>
-                                <li><a href="../brands/owen.html"> <span class="pull-right">(56)</span>Owen</a></li>
-                                <li><a href="../brands/5-the-way.html"> <span class="pull-right">(27)</span>5 the way</a></li>
-                                <li><a href="../brands/4men.html"> <span class="pull-right">(32)</span>4Men</a></li>
-                                <li><a href="../brands/juno.html"> <span class="pull-right">(5)</span>Juno</a></li>
-                                <li><a href="../brands/bwm.html"> <span class="pull-right">(9)</span>BWM</a></li>
+                                <li><a href= <%= originURL + productParam + '&brand=1' + catalogParam %> ><span class="pull-right">(50)</span>Việt tiến</a></li>
+                                <li><a href= <%= originURL + productParam + '&brand=2' + catalogParam %> ><span class="pull-right">(56)</span>Owen</a></li>
+                                <li><a href= <%= originURL + productParam + '&brand=3' + catalogParam %> ><span class="pull-right">(27)</span>5 the way</a></li>
+                                <li><a href= <%= originURL + productParam + '&brand=4' + catalogParam %> ><span class="pull-right">(32)</span>4Men</a></li>
+                                <li><a href= <%= originURL + productParam + '&brand=5' + catalogParam %>><span class="pull-right">(5)</span>Juno</a></li>
+                                <li><a href= <%= originURL + productParam + '&brand=6' + catalogParam %> ><span class="pull-right">(9)</span>BWM</a></li>
                             </ul>
                         </div>
                     </div><!--/brands_products-->
@@ -60,10 +62,10 @@
                         <h2>Phân loại</h2>
                         <div class="brands-name">
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="../catolory/nam.html"> <span class="pull-right">(50)</span>Thời trang nam</a></li>
-                                <li><a href="../catolory/nu.html"> <span class="pull-right">(56)</span>Thời trang nữ</a></li>
+                                <li><a href= <%= originURL + productParam + brandParam + '&catalog=1' %> > <span class="pull-right">(50)</span>Thời trang nam</a></li>
+                                <li><a href= <%= originURL + productParam + brandParam + '&catalog=2' %> > <span class="pull-right">(56)</span>Thời trang nữ</a></li>
                                 
-                                <li><a href="../catolory/tre-em.html"> <span class="pull-right">(32)</span>Trẻ em</a></li>
+                                <li><a href= <%= originURL + productParam + brandParam + '&catalog=3' %> > <span class="pull-right">(32)</span>Trẻ em</a></li>
                             </ul>
                         </div>
                     </div><!--/brands_products-->
@@ -75,25 +77,112 @@
                 </div>
             </div>
 
+            
             <div class="col-sm-9 padding-right">
+                <% if(sortParam != 'x') {%>
+                 <div class="col-sm-3" style="width: 100%;">                                               
+                    <div class="dropdown" style="width: 250px;float: right; margin: 0;">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin: 0;text-align: left; background: white; color:black">
+                            <%= sortParam%>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href=<%= originURL + productParam + brandParam + catalogParam + '&sort=1' %> >Nothing</a></li>
+                            <li><a href=<%= originURL + productParam + brandParam + catalogParam + '&sort=2' %> >High Price → Low Price</a></li>
+                            <li><a href= <%= originURL + productParam + brandParam + catalogParam + '&sort=3' %> >Low Price → High Price</a></li>
+                        </ul>
+                    </div>
+                    <p style="float: right; margin: 0; padding: 5px ;">Sort by: &nbsp</p>                               
+                </div>
+                <% } %>
+             
+                <div style="clear: both;"></div>
+                <%if( productParam !== "" || brandParam !== "" || catalogParam !== "") {%>
+                    <div style="float: left;">
+                        <p>Lọc sản phẩm theo: </p>
+                        <%if(productParam !== "") {%>                                                                                                  
+                                    <a href= <%= fullreq + '&delete=1' %> >Loại sản phẩm</a>                                                              
+                        <%}%> 
+                        <%if(brandParam !== "") {%>                                                                                                 
+                                    <a href= <%= fullreq  + '&delete=2' %> >Thương hiệu</a>                                                               
+                        <%}%>
+                        <%if(catalogParam !== "") {%>
+                                                                                                   
+                                    <a href= <%= fullreq  + '&delete=3' %> >Danh mục</a>                                   
+                            
+                        <%}%>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <%}%>
+
                    <div class="features_items">
+                       
                             <h2 class="title text-center">Danh sách sản phẩm</h2>
                             <% danhsach.rows.forEach(function(sp){%>
                             <div class="col-sm-4">
                                 <div class="product-image-wrapper">
-                                    <div class="single-products">
+                                    <div class="single-products" style="background: white;">
                                         <div class="productinfo text-center">
                                             <img height="240" width="240" src= <%= "../" + sp.imgPath %> />
                                             <h2><%= sp.price%> vnd</h2>
                                             <a href= <%= "../" + sp.id %>><p class="linkproduct" ><%= sp.name%></p></a>
         
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                                            <a style="margin-bottom: 0px;" class="btn btn-default add-to-cart" href= <%= '/addcart?id=' + sp.id %> ><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <% }); %>
-                    </div>               
+                    </div>  
+                   
+                    <!--phan trang -->
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <% if(currentPage > 1) { %>
+                                <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=' + (parseInt(currentPage) - 1)%> >Previous</a></li>
+                            <% }else { %>
+                                <li class="page-item"><a class="page-link" href= <%= fullreq %> >Previous</a></li>
+                            <% } %>    
+                            <!------------------------------------------->
+                            <% if(limitPage > 2) {%>
+                                <% if(currentPage < limitPage - 2) { %>
+                                    <li class="page-item"><a class="page-link" href= <%= fullreq + '&page='  + currentPage %> ><%= currentPage %></a></li>
+                                <% }else { %>                                                           
+                                    <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=' + (parseInt(limitPage) - 2).toString() %> ><%= parseInt(limitPage) - 2 %></a></li>                               
+                                <% } %>
+                            <%} else{%>
+                                <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=1' %> >1</a></li>
+                            <%}%>
+
+                             <!------------------------------------------->
+                            <% if(limitPage > 2) {%>
+                                <% if(currentPage < limitPage - 1) { %>
+                                    <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=' + (parseInt(currentPage) + 1).toString() %> ><%= parseInt(currentPage) + 1 %></a></li>
+                                <% }else { %>
+                                    <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=' + (parseInt(limitPage) - 1).toString() %> ><%= parseInt(limitPage) - 1 %></a></li>
+                                <% } %>
+                            <% }%>
+
+                             <!------------------------------------------->
+                            <% if(limitPage > 1) { %>
+                                <% if(currentPage < limitPage - 2) { %>
+                                    <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=' + (parseInt(currentPage)  + 2).toString() %> ><%= parseInt(currentPage) + 2 %></a></li>
+                                <% }else { %>
+                                    <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=' + limitPage %> ><%= limitPage%></a></li>
+                                <% } %>
+                            <% } %>
+                             <!------------------------------------------->
+                            <% if(currentPage < limitPage) { %>
+                                
+                                <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=' + (parseInt(currentPage) + 1)%> >Next</a></li>                            
+                            <% }else { %>
+                                
+                                <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=' + limitPage %> >Next</a></li>
+                            <% } %>
+                          
+                        </ul>
+                      </nav>
+
+                   
             </div>
         </div>
     </div>
