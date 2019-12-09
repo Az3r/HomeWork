@@ -9,7 +9,7 @@ class adminRegisterBus
 {
     showRegister(req, res, next)
     {
-        if(req.isAuthenticated())
+        if(req.isAuthenticated() && (req.user.type == 1 || req.user.type == 2))
             res.render('admin/register', { title: 'Đăng kí' ,layout: 'admin', notification: '', adminName: req.user.name});
         else
         res.redirect('/admin/login.html');

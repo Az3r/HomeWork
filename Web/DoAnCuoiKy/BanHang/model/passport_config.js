@@ -34,11 +34,11 @@ module.exports = function(passport)
        }
     ));
 passport.serializeUser(function(user, done) {
-    done(null, user.rows[0]);
+    done(null, user.rows[0].id);
 });
 
-passport.deserializeUser(function(account, done) {
-        pool.query("SELECT * FROM usertable WHERE id = '" + account.id + "'", function(error, result){
+passport.deserializeUser(function(id, done) {
+        pool.query("SELECT * FROM usertable WHERE id = '" + id + "'", function(error, result){
             if(result.rowCount > 0)
                 done(null, result.rows[0]);
             else

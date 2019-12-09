@@ -3,10 +3,12 @@ let router = express.Router();
 let model = require('../model/productDetail_Bus');
 let registerModel = require('../model/registerBus');
 let loginModel = require('../model/loginBus');
+let searchModel = require('../model/searchBus');
 
 let bus = new model();
 let registerBus = new registerModel();
 let login_outBus = new loginModel();
+let searchBus = new searchModel();
 
 class gerneralControl
 {
@@ -21,7 +23,7 @@ class gerneralControl
 
     contact(req, res, next)
     {
-        if(req.isAuthenticated())//, username: req.user.name, link: '../logout.html', status: 'Đăng xuất'
+        if(req.isAuthenticated())
             res.render('user/contact', { title: 'Liên hệ',layout: 'index', username: req.user.name, link: '../logout.html', status: 'Đăng xuất'});
         else
             res.render('user/contact', { title: 'Liên hệ',layout: 'index', username: 'Tài khoản', link: '../login.html', status: 'Đăng nhập'});
@@ -39,14 +41,6 @@ class gerneralControl
     {
         if(req.isAuthenticated())
             res.render('user/checkout', { title: 'Thanh toán',layout: 'index', username: req.user.name, link: '../logout.html', status: 'Đăng xuất'});
-        else
-            res.redirect('/login.html');
-    }
-
-    cart(req, res, next)
-    {
-        if(req.isAuthenticated())
-            res.render('user/Cart', { title: 'Giỏ hàng', layout: 'index', username: req.user.name, link: '../logout.html', status: 'Đăng xuất'});
         else
             res.redirect('/login.html');
     }
@@ -107,6 +101,12 @@ class gerneralControl
     {
         login_outBus.logout(req, res, next);
     }
+
+    searchProduct(req, res, next)
+    {
+        searchBus.search(req, res, next);
+    }
+    
     //for post register method
     register(req, res, next)
     {   

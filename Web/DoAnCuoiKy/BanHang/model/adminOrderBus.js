@@ -5,7 +5,7 @@ class orderBus
 {
     allOrder(req, res, next)
     {
-        if(req.isAuthenticated())
+        if(req.isAuthenticated() && (req.user.type == 1 || req.user.type == 2))
             res.render('admin/order', { title: 'Đơn hàng',layout: 'admin', adminName: req.user.name });
         else
             res.redirect('/admin/login.html');
@@ -13,7 +13,7 @@ class orderBus
 
     orderDetail(req, res, next)
     {
-        if(req.isAuthenticated())
+        if(req.isAuthenticated() && (req.user.type == 1 || req.user.type == 2))
             res.render('admin/edit-order', { title: 'Chi tiết đơn hàng',layout: 'admin', adminName: req.user.name });
         else
             res.redirect('/admin/login.html');

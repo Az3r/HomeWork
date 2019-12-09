@@ -3,6 +3,11 @@ let bus = new model();
 
 class login_outControll
 {
+    showHomePage(req, res, next)
+    {
+        bus.showDashboard(req, res, next);
+    }
+
     showLogin(req, res, next)
     {
         bus.showlogin(req, res, next);

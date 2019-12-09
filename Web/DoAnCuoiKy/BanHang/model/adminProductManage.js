@@ -5,7 +5,7 @@ class productManage
 {
     salesReport(req, res, next)
     {
-        if(req.isAuthenticated())
+        if(req.isAuthenticated() && (req.user.type == 1 || req.user.type == 2))
             res.render('admin/sales', { title: 'Chi tiết đơn hàng',layout: 'admin', adminName: req.user.name });
         else
             res.redirect('/admin/login.html');
@@ -13,7 +13,7 @@ class productManage
 
     topProduct(req, res, next)
     {
-        if(req.isAuthenticated())
+        if(req.isAuthenticated() && (req.user.type == 1 || req.user.type == 2))
             res.render('admin/top', { title: 'Chi tiết đơn hàng',layout: 'admin', adminName: req.user.name });
         else
             res.redirect('/admin/login.html');
