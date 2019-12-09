@@ -21,10 +21,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/dashboard.html', function(req, res, next){
-    if(req.isAuthenticated())
-        res.render('admin/dashboard', { title: 'Trang chủ',layout: 'admin', adminName: req.user.name });
-    else
-        res.redirect('/admin/login.html');
+   login_outControl.showHomePage(req, res, next);
 });
 
 router.post('/login.html', function(req, res, next){
