@@ -923,7 +923,8 @@ h2.title {
 }
 
 .add-to-cart {
-    background: #F5F5ED;
+    background: #fafe0f;
+    
     border: 0 none;
     border-radius: 0;
     color: #696763;
@@ -949,7 +950,8 @@ h2.title {
 
 .add-to-cart:hover {
     background: #FE980F;
-    color: #FFFFFF;
+    color: white;
+    font-weight: bold;
 }
 
 .choose {
@@ -2438,4 +2440,14 @@ textarea {
 
 .contact-info .social-networks ul li a:hover {
     color: #FE980F;
+}
+
+
+.category-products .panel-default .panel-heading .panel-title a:hover, .brands-name .nav-stacked li a:hover, .brands-name .nav-stacked li a:hover{
+    color: red;
+    font-weight: bolder;
+    background: #0e0e07;
+}
+.category-products .panel-default .panel-heading:hover, .brands-name .nav-stacked li:hover, .brands-name .nav-stacked li:hover{
+    background: #0e0e07;
 }
