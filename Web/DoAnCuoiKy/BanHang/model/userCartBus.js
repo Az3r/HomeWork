@@ -9,14 +9,21 @@ class addCart
     {
         if(req.isAuthenticated())
         {
-            const userID = req.user.id;
+            if(req.user.status == "active")
+            {
+                const userID = req.user.id;
 
-            pool.query("SELECT * FROM usercart INNER JOIN product ON usercart.productid = product.id WHERE usercart.userid = " + userID, function(err, result){
-                if(err)
-                    return console.log(err);
-                
-                res.render('user/Cart', { title: 'Giỏ hàng', layout: 'index', username: req.user.name, link: '../logout.html', status: 'Đăng xuất', danhsach: result});
-            });
+                pool.query("SELECT * FROM usercart INNER JOIN product ON usercart.productid = product.id WHERE usercart.userid = " + userID, function(err, result){
+                    if(err)
+                        return console.log(err);
+                    
+                    res.render('user/Cart', { title: 'Giỏ hàng', layout: 'index', username: req.user.name, link: '../logout.html', status: 'Đăng xuất', danhsach: result});
+                });
+            }
+            else if(req.user.status == "ban")
+                res.redirect('/banned.html');
+            else
+                res.redirect('/active.html');
             
         }
         else
@@ -98,15 +105,16 @@ class addCart
                 pool.query("UPDATE usercart SET number = " + newValue + " WHERE userid = " + userID + " AND productid = " + result.rows[i].productid, function(e){
                     if(e)
                         return console.log(e);
+
+                    if(i == result.rowCount - 1)
+                        res.redirect('/cart.html');
                     
                     
                 });
             }
-            res.redirect('/cart.html');
-            
+                   
         });
         
-        //lay het 
     }
 }
 

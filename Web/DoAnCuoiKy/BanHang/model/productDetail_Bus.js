@@ -6,6 +6,7 @@ let pool = require('../connection');
 
 let tool = new model();
 
+
 class productDetail
 {
    
@@ -50,8 +51,13 @@ class productDetail
                   output.rows = cmt.rows.slice(((page - 1) * commentInPage), ((page - 1) * commentInPage + commentInPage));
 
 
-                  if(req.isAuthenticated())               
-                    res.render('user/product-detail', { title: 'Chi tiết sản phầm' ,layout: 'index', username: req.user.name, link: '../logout.html', status: 'Đăng xuất' ,danhsach:result, splienquan: temp, comment: cmt, currentPage: page, limitPage: maxPage, unameauto: req.user.username, emailauto: req.user.email});  
+                  if(req.isAuthenticated())      
+                  {         
+                    if(req.user.status == "active")
+                      res.render('user/product-detail', { title: 'Chi tiết sản phầm' ,layout: 'index', username: req.user.name, link: '../logout.html', status: 'Đăng xuất' ,danhsach:result, splienquan: temp, comment: cmt, currentPage: page, limitPage: maxPage, unameauto: req.user.username, emailauto: req.user.email});  
+                    else
+                      res.redirect('/active.html');
+                  }
                   else    
                     res.render('user/product-detail', { title: 'Chi tiết sản phầm' ,layout: 'index', username: 'Tài khoản' ,link: '../login.html', status: 'Đăng nhập',danhsach:result, splienquan: temp, comment: cmt, currentPage: page, limitPage: maxPage , unameauto: '', emailauto: ''});       
                 });
@@ -154,8 +160,15 @@ class productDetail
 
               output.rows = result.rows.slice(((page - 1) * itemInPage), ((page - 1) * itemInPage + itemInPage));
 
-              if(req.isAuthenticated())                              
-                res.render('user/shop', {title: 'Cửa hàng',layout: 'index', fullreq: fullURL, originURL: standardURL, productParam: firstParam, brandParam: secondParam, catalogParam: thirdParam, sortParam: sort ,danhsach: output, currentPage: page, limitPage: maxPage,  username: req.user.name, link: '../logout.html', status: 'Đăng xuất' });
+              if(req.isAuthenticated())    
+              {         
+                if(req.user.status == "active")                 
+                  res.render('user/shop', {title: 'Cửa hàng',layout: 'index', fullreq: fullURL, originURL: standardURL, productParam: firstParam, brandParam: secondParam, catalogParam: thirdParam, sortParam: sort ,danhsach: output, currentPage: page, limitPage: maxPage,  username: req.user.name, link: '../logout.html', status: 'Đăng xuất' });
+                else if(req.user.status == "ban")
+                  res.redirect('/banned.html');
+                else
+                  res.redirect('/active.html');
+              }
               else                     
                 res.render('user/shop', {title: 'Cửa hàng',layout: 'index', fullreq: fullURL, originURL: standardURL, productParam: firstParam, brandParam: secondParam, catalogParam: thirdParam, sortParam: sort  ,danhsach: output, currentPage: page, limitPage: maxPage, username: 'Tài khoản', link: '../login.html', status: 'Đăng nhập'});
               
@@ -178,8 +191,16 @@ class productDetail
                 res.end();
                 return console.log('Error runing query sp_ua_thich', err);
               }  
-              if(req.isAuthenticated())                              
-                res.render('user/home', { title: 'Trang chủ',layout: 'index', username: req.user.name,  link: '../logout.html', status: 'Đăng xuất', danhsach:result});
+
+              if(req.isAuthenticated())     
+              {
+                if(req.user.status == "active")                         
+                  res.render('user/home', { title: 'Trang chủ',layout: 'index', username: req.user.name,  link: '../logout.html', status: 'Đăng xuất', danhsach:result});
+                else if(req.user.status == "ban")
+                  res.redirect('/banned.html');
+                else
+                  res.redirect('/active.html');
+              }
               else    
                 res.render('user/home', { title: 'Trang chủ',layout: 'index', username: 'Tài khoản', link: '../login.html', status: 'Đăng nhập' , danhsach:result});
               

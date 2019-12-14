@@ -1,8 +1,9 @@
 let express = require('express');
 let router = express.Router();
 let bycrypt = require('bcryptjs');
-
+let mailHandler = require('../model/sendEmail');
 let pool = require('../connection');
+let random = require('./activeCodeGenerate');
 
 class registerHandler
 {  
@@ -44,14 +45,16 @@ class registerHandler
                 if(eror)
                   return console.log(e);
 
-                //pool.query("INSERT INTO usertable (name, email, username, password) VALUES('" + req.body.name + "','" + req.body.email + "','" + req.body.username + "','" + newpass + "')", function(e)
-                //pool.query("INSERT INTO usertable (username, email, password, name, lastname, type, status) VALUES('" + req.body.username + "','" + req.body.email + "','" + newpass + "','" + req.body.name + req.body.lastname + "', 0, 'active')", function(e)
-                pool.query("INSERT INTO usertable (username, email ,password, name, lastname, type, status) VALUES ('" + req.body.username + "','" + req.body.email + "','" + newpass + "','" + req.body.name + "','" + req.body.lastname  + "', 0, 'active')", function(e)
+                const acticeCode = random();                
+               
+
+                pool.query("INSERT INTO usertable (username, email ,password, name, lastname, type, status, activecode) VALUES ('" + req.body.username + "','" + req.body.email + "','" + newpass + "','" + req.body.name + "','" + req.body.lastname  + "', 0, 'nonactive','" + acticeCode +"')", function(e)
                 {
                   if(e)                      
                     return console.log('error in insert db', e);  
 
-                  res.redirect('/');
+                  mailHandler(req.body.email, acticeCode, 1);
+                  res.redirect('/success.html');
                 });   
                         
               });

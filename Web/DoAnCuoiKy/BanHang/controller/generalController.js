@@ -50,7 +50,9 @@ class gerneralControl
         if(req.isAuthenticated())
             res.redirect('/');
         else
+        {   
             res.render('user/login', { title: 'Đăng nhập' ,layout: 'index', username: 'Tài khoản', link: '../login.html', status: 'Đăng nhập'});
+        }
             
     }
 
@@ -81,7 +83,7 @@ class gerneralControl
     history(req, res, next)
     {
         if(req.isAuthenticated())
-            res.render('user/history', { title: 'Tài khoản' ,layout: 'index', username: req.user.name, link: '../logout.html', status: 'Đăng xuất'});
+            res.render('user/history', { title: 'Lịch sử giao dịch' ,layout: 'index', username: req.user.name, link: '../logout.html', status: 'Đăng xuất'});
         else
             res.redirect('/login.html');
     }
