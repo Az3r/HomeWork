@@ -11,17 +11,19 @@
                 <div class="panel-body">
                     <div class="text-center">
                         <h3><i class="fa fa-lock fa-4x"></i></h3>
-                        <h2 class="text-center">Quên mật khẩu</h2>
-                        <p>Chúng tôi sẽ tạo mật khẩu tạm thời cho bạn</p>
+                        <h2 class="text-center">Kích hoạt tài khoản</h2>
+                        <p>Nhập mã kích hoạt ở đây</p>
                         <div class="panel-body">
-                            <form action="../forgotpassword.html" method="POST">
+
+                            <form action="/active.html" method="POST">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                        <input name="uname" placeholder="Tên đăng nhập của bạn" class="form-control">
+                                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                        <input name="code" type="text" placeholder="Tên đăng nhập" class="form-control">
                                     </div>
-                                    <button  class="btn btn-lg btn-primary btn-block"  type="submit"> Lấy mật khẩu </button>
+                                    <button  class="btn btn-lg btn-primary btn-block"  type="submit"> Gửi</button>
                                 </div>
+                               
                             </form>
                         </div>
                     </div>

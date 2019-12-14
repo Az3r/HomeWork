@@ -11,6 +11,7 @@
         <br><br>
         <h3 style="align-content: center">Lịch sử mua hàng</h3>
         <br><br>
+        <%if(danhsach.rowCount > 0){%>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -19,44 +20,23 @@
                 <th>Sản phẩm</th>
                 <th>Tổng tiền</th>
                 <th>Trạng thái</th>
-
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td><a href="../dilevery.html">414523443</a></td>
-                <td>24/10/2019</td>
-                <td>Kẹo Socola đen đắng 70% </td>
-                <td>75.000đ</td>
-                <td>Giao hàng thành công</td>
-
-            </tr>
-            <tr>
-                <td><a href="../dilevery.html">414586443</a></td>
-                <td>24/10/2019</td>
-                <td>Ngũ cốc hoa quả Nhật Bản gói 800g</td>
-                <td>168.488đ</td>
-                <td>Giao hàng thành công</td>
-
-            </tr>
-            <tr>
-                <td><a href="../dilevery.html">414584343</a></td>
-                <td>24/10/2019</td>
-                <td>Valentine White chocolate</td>
-                <td>13.500đ</td>
-                <td>Đang giao</td>
-
-            </tr>
-            <tr>
-                <td><a href="../dilevery.html">414586153</a></td>
-                <td>11/08/2019</td>
-                <td>Tấm lót chuột</td>
-                <td>19.500đ</td>
-                <td>Đã hủy</td>
-
-            </tr>
+                <% danhsach.rows.forEach(function(sp){%>
+                    <tr>
+                        <td style="text-align: center;"><a href=<%= '/dilevery.html?billid=' + sp.userbill %>> <%= sp.userbill%> </a> </td>
+                        <td><%= sp.date%></td>
+                        <td><%= sp.name%></td>
+                        <td><%= parseInt(sp.price) * parseInt(sp.number)%></td>
+                        <td><%= sp.status%></td>           
+                    </tr>
+                <% }); %>          
             </tbody>
         </table>
+        <% } else { %>
+            <h1>Chưa có giao dịch nào</h1>
+        <% } %>
         <br><br><br><br>
     </div>
 </div>

@@ -1,0 +1,87 @@
+<div class="container" style="background: #f2f2f2;">
+    <div class="col-sm-3">
+        <br>
+        <br>
+        <a href="../acount.html" ><button type="submit" style="font-size: 1.2em; font-style: initial; padding: 7px;width: 90%" class="btn-primary"><i class="fa fa-address-book"></i><b style="font: caption"> Thông tin cá nhân</b></button> </a>
+        <br>
+        <br>
+    </div>
+    <div class="col-sm-9">
+        <h1>Chỉnh sửa thông tin tài khoản</h1>
+        <hr>
+        <p><%= mess%></p>
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-3">
+                <div class="text-center">
+                    <img src="//user/placehold.it/100" class="avatar img-circle" alt="avatar">
+                    <h6>Tải hình ảnh lên....</h6>
+
+                    <input type="file" class="form-control">
+                </div>
+            </div>
+
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+                <form class="form-horizontal" role="form" method="POST" action="/edit-account.html">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Họ và tên đệm:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" name="newlastname" type="text" placeholder=<%= account.lastname %>>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Tên:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" name="newname" type="text" placeholder=<%= account.name %>>
+                        </div>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Email:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" name="newemail" type="text" placeholder=<%= account.email %>>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Tên đăng nhập:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="newusername" type="text" placeholder=<%= account.username %>>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Mật khẩu cũ:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="oldpass" type="password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Mật khẩu mới:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="newpass" type="password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Nhập lại mật khẩu mới:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="newpass_confrim" type="password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-8">
+                            <button type="submit" class="btn btn-primary" >Lưu</button>
+                            <!--<input type="button" class="btn btn-primary" value="Lưu">-->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+</div>
+<hr>
+</div>

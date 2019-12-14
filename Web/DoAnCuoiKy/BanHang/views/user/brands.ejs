@@ -38,8 +38,57 @@
                              </div>
                          </div>
                          <% }); %>
-                 </div>               
-         </div>
+                 </div>
+
+                   <!--phan trang -->
+                   <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <% if(currentPage > 1) { %>
+                            <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=' + (parseInt(currentPage) - 1)%> >Previous</a></li>
+                        <% }else { %>
+                            <li class="page-item"><a class="page-link" href= <%= fullreq %> >Previous</a></li>
+                        <% } %>    
+                        <!------------------------------------------->
+                        <% if(limitPage > 2) {%>
+                            <% if(currentPage < limitPage - 2) { %>
+                                <li class="page-item"><a class="page-link" href= <%= fullreq + '&page='  + currentPage %> ><%= currentPage %></a></li>
+                            <% }else { %>                                                           
+                                <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=' + (parseInt(limitPage) - 2).toString() %> ><%= parseInt(limitPage) - 2 %></a></li>                               
+                            <% } %>
+                        <%} else{%>
+                            <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=1' %> >1</a></li>
+                        <%}%>
+
+                         <!------------------------------------------->
+                        <% if(limitPage > 2) {%>
+                            <% if(currentPage < limitPage - 1) { %>
+                                <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=' + (parseInt(currentPage) + 1).toString() %> ><%= parseInt(currentPage) + 1 %></a></li>
+                            <% }else { %>
+                                <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=' + (parseInt(limitPage) - 1).toString() %> ><%= parseInt(limitPage) - 1 %></a></li>
+                            <% } %>
+                        <% }%>
+
+                         <!------------------------------------------->
+                        <% if(limitPage > 1) { %>
+                            <% if(currentPage < limitPage - 2) { %>
+                                <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=' + (parseInt(currentPage)  + 2).toString() %> ><%= parseInt(currentPage) + 2 %></a></li>
+                            <% }else { %>
+                                <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=' + limitPage %> ><%= limitPage%></a></li>
+                            <% } %>
+                        <% } %>
+                         <!------------------------------------------->
+                        <% if(currentPage < limitPage) { %>
+                            
+                            <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=' + (parseInt(currentPage) + 1)%> >Next</a></li>                            
+                        <% }else { %>
+                            
+                            <li class="page-item"><a class="page-link" href= <%= fullreq + '&page=' + limitPage %> >Next</a></li>
+                        <% } %>
+                      
+                    </ul>
+                  </nav>
+
+            </div>
         </div>
     </div>
 </section>

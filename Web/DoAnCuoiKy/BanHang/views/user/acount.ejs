@@ -2,7 +2,7 @@
     <div class="col-sm-3">
         <br>
         <br>
-        <a href="../acount.html" ><button type="submit" style="font-size: 1.2em; font-style: initial; padding: 7px;width: 90%" class="btn-primary"><i class="fa fa-address-book"></i><b style="font: caption"> Thông tin cá nhân</b></button> </a>
+        <a href="../edit-account.html" ><button type="submit" style="font-size: 1.2em; font-style: initial; padding: 7px;width: 90%" class="btn-primary"><i class="fa fa-address-book"></i><b style="font: caption"> Chỉnh sửa thông tin cá nhân</b></button> </a>
         <br>
         <br>
         <a href="../history.html" ><button  type="submit" style="font-size: 1.2em; font-style: initial; padding: 7px;width: 90%" class="btn-primary" ><i class="fa fa-search"> </i> <b style="font: caption"> Lịch sử mua hàng </b></button></a>
@@ -27,57 +27,28 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Họ và tên đệm:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" value="Nguyễn Văn">
+                            <input class="form-control" name="newlastname" size="30" readonly type="text" value=<%= account.lastname %> >
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Tên:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" value="Toàn">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Công ty</label>
-                        <div class="col-lg-8">
-                            <input class="form-control" type="text" value="acb">
+                            <input class="form-control" name="newname" size="30" readonly type="text" value=<%= account.name %>>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Email:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" value="janesemail@gmail.com">
+                            <input class="form-control" name="newemail" size="30" readonly type="text" value=<%= account.email %>>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">SĐT:</label>
-                        <div class="col-lg-8">
-                            <input class="form-control" type="text" value="09713767263">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Địa chỉ:</label>
-                        <div class="col-lg-8">
-                            <input class="form-control" type="text" value="123 CMT Tp.HCM">
-                        </div>
-                    </div>
+                    </div>                 
                     <div class="form-group">
                         <label class="col-md-3 control-label">Tên đăng nhập:</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" value="abc">
+                            <input class="form-control" name="newusername" size="30" readonly type="text" value=<%= account.username %>>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Mật khẩu:</label>
-                        <div class="col-md-8">
-                            <input class="form-control" type="password" value="**********">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label"></label>
-                        <div class="col-md-8">
-                            <input type="button" class="btn btn-primary" value="Lưu">
-                        </div>
-                    </div>
+                 
                 </form>
             </div>
         </div>
