@@ -53,6 +53,7 @@ app.use(passport.session());
 //routing direction
 app.post('/login.html', (req, res, next) => { passport.authenticate('local', {successRedirect: '/', failureRedirect: '/login.html'})(req, res, next);});
 app.post('/admin/login.html', (req, res, next) => { passport.authenticate('local', {successRedirect: '/admin/dashboard.html', failureRedirect: '/admin/login.html'})(req, res, next);});
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/brands', brandRouter);

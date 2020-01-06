@@ -4,7 +4,7 @@
     <form>
         <div class="form-group">
             <label for="usr">Mã đơn hàng</label>
-            <input type="text" class="form-control" id="usr" value="12356">
+            <input readonly type="text" class="form-control" id="usr" value=<%= danhsach.rows[0].userbill %>>
         </div>
     </form>
 </div>
@@ -24,78 +24,35 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="cart_description">
-                        <h4><a href="">Váy nữ</a></h4>
-                        <p>Mã sản phẩm: 1089772</p>
-                    </td>
-                    <td class="cart_price">
-                        <p>$59</p>
-                    </td>
-                    <td class="cart_quantity">
-                        <div class="cart_quantity_button">
-                            <a class="cart_quantity_up" href=""> + </a>
-                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                            <a class="cart_quantity_down" href=""> - </a>
-                        </div>
-                    </td>
-                    <td class="cart_total">
-                        <p class="cart_total_price">$59</p>
-                    </td>
-                    <td class="cart_delete">
-                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                    </td>
-                </tr>
+                
+                    <% sum = 0 %>
+                    <% danhsach.rows.forEach(function(item){%>  
+                        <tr>
+                            <td class="cart_description">
+                                <h4><%= item.name%></h4>
+                                <p><%= 'Mã sản phẩm: ' + item.id %></p>
+                            </td>
+                            <td class="cart_price">
+                                <p><%= item.price %></p>
+                            </td>
+                            <td class="cart_quantity">
+                                <div class="cart_quantity_button">       
+                                    <input readonly class="cart_quantity_input" type="text" name="quantity" value=<%= item.number %> >            
+                                </div>
+                            </td>
+                            <td class="cart_total">
+                                <p class="cart_total_price"><%=  parseInt(item.number) * parseInt(item.price) %></p>
+                                <% sum += parseInt(item.number) * parseInt(item.price) %>
+                            </td>
+                        </tr>             
+                                              
+                    <% }); %>
 
-                <tr>
-                    <td class="cart_description">
-                        <h4><a href="">Váy nữ</a></h4>
-                        <p>Mã sản phẩm: 1089772</p>
-                    </td>
-                    <td class="cart_price">
-                        <p>$59</p>
-                    </td>
-                    <td class="cart_quantity">
-                        <div class="cart_quantity_button">
-                            <a class="cart_quantity_up" href=""> + </a>
-                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                            <a class="cart_quantity_down" href=""> - </a>
-                        </div>
-                    </td>
-                    <td class="cart_total">
-                        <p class="cart_total_price">$59</p>
-                    </td>
-                    <td class="cart_delete">
-                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="cart_description">
-                        <h4><a href="">Váy nữ</a></h4>
-                        <p>Mã sản phẩm: 1089772</p>
-                    </td>
-                    <td class="cart_price">
-                        <p>$59</p>
-                    </td>
-                    <td class="cart_quantity">
-                        <div class="cart_quantity_button">
-                            <a class="cart_quantity_up" href=""> + </a>
-                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                            <a class="cart_quantity_down" href=""> - </a>
-                        </div>
-                    </td>
-                    <td class="cart_total">
-                        <p class="cart_total_price">$59</p>
-                    </td>
-                    <td class="cart_delete">
-                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                    </td>
-                </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td style="margin-left: 20%">Tổng tiền: </td>
-                    <td> 100$</td>
+                    <td> <%= sum %></td>
                     <td></td>
                 </tr>
                 </tbody>
@@ -107,23 +64,19 @@
     <form>
         <div class="form-group">
             <label for="usr">Ngày đặt</label>
-            <input type="date" class="form-control" id="usr" value="2019-01-01">
-        </div>
-        <div class="form-group">
-            <label for="pwd">Ngày giao</label>
-            <input type="date" class="form-control" id="usr" value="2019-01-10">
+            <input readonly type="text" class="form-control" id="usr" value=<%= danhsach.rows[0].date %>>
         </div>
         <div class="form-group">
             <label for="pwd">Người nhận</label>
-            <input type="text" class="form-control" id="usr" value="Nguyễn Văn A">
+            <input readonly type="text"  class="form-control" id="usr" value= "<%=  danhsach.rows[0].fullname  %>" >
         </div>
         <div class="form-group">
             <label for="pwd">Điện thoại</label>
-            <input type="number" class="form-control" id="usr" value="098789878">
+            <input readonly type="tel" class="form-control" id="usr" value= " <%= danhsach.rows[0].tel %> ">
         </div>
         <div class="form-group">
             <label for="pwd">Địa chỉ</label>
-            <input type="text" class="form-control" id="usr" value="123 CMT8 Tp.Hồ Chí Minh">
+            <input readonly type="text" class="form-control" id="usr" value=" <%= danhsach.rows[0].address %> ">
         </div>
 
     </form>

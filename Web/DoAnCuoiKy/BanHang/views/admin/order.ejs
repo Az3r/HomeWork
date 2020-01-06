@@ -1,129 +1,86 @@
-<div style="margin-left: 30%; margin-right: 30%; margin-top: 3%; font-size: large" class="alert alert-success text-center" role="alert"><span><strong>Danh sách đơn hàng</strong>.</span></div>
+<div style="margin-left: 30%; margin-right: 30%; margin-top: 3%; font-size: large" class="alert alert-success text-center" role="alert"><span><strong>Danh sách khách hàng</strong>.</span></div><br><br>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table" cellspacing="0">
+            <thead style="background: #E2DEDE">
+            <tr>
+                <th>STT</th>
+                <th>Mã đơn hàng</th>
+                <th>Tài khoản đặt</th>
+                <th>Người nhận</th>
+                <th>Số điện thoại</th>
+                <th>Địa chỉ giao hàng</th>
+                <th>Ngày đặt</th>
+                <th>Tình trạng</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                <% danhsach.rows.forEach(function(bill){%>               
+                    <tr>
+                        <td><%= i %></td>
+                        <td style="text-align: center;"><%= bill.id %></td>
+                        <td><%= bill.name %></td>
+                        <td><%= bill.fullname %></td>
+                        <td><%= bill.tel %></td>
+                        <td><%= bill.address %></td>
+                        <td><%= bill.date %></td>
+                        <td><%= bill.status %></td>
+                        <% if (bill.status == "đang giao") { %>
+                        <td><a style="margin: 0 5px;"  href=<%= '/admin/edit-order.html?orderid=' + bill.id %> ><i class="fa fa-eye" ></i></a><a style="margin: 0 2px;" href=<%= '/admin/edit-order.html?completeid=' + bill.id %> ><i  class="fa fa-check" ></i></a>
+                        <% } else { %>
+                            <td><a style="margin: 0 2px;"  href=<%= '/admin/edit-order.html?orderid=' + bill.id %> ><i class="fa fa-eye" ></i></a>
+                        <% } %>
+                    </tr>
+                    <% i += 1 %>
+                <% }); %>
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example" style="margin: 5px;">
+            <ul class="pagination">
+                <% if(currentPage > 1) { %>
+                    <li class="page-item"><a class="page-link" href= <%= '/admin/order.html?page=' + (parseInt(currentPage) - 1)%> >Previous</a></li>
+                <% }else { %>
+                    <li class="page-item"><a class="page-link" href= <%= '/admin/order.html' %> >Previous</a></li>
+                <% } %>    
+                <!------------------------------------------->
+                <% if(limitPage > 2) {%>
+                    <% if(currentPage < limitPage - 2) { %>
+                        <li class="page-item"><a class="page-link" href= <%='/admin/order.html?&page='  + currentPage %> ><%= currentPage %></a></li>
+                    <% }else { %>                                                           
+                        <li class="page-item"><a class="page-link" href= <%='/admin/order.html?&page=' + (parseInt(limitPage) - 2).toString() %> ><%= parseInt(limitPage) - 2 %></a></li>                               
+                    <% } %>
+                <%} else{%>
+                    <li class="page-item"><a class="page-link" href= <%='/admin/order.html?&page=1' %> >1</a></li>
+                <%}%>
 
-<section id="tabs" class="project-tab">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <nav>
-                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Đã Giao</a>
-                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Đang giao</a>
-                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Chưa giao</a>
-                    </div>
-                </nav>
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <table class="table" cellspacing="0">
-                            <thead style="background: #E2DEDE">
-                            <tr>
-                                <th>STT</th>
-                                <th>Mã đơn hàng</th>
-                                <th>Sản phẩm</th>
-                                <th>Ngày đặt</th>
-                                <th>Ngày giao</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr onclick="window.location='edit-order.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>1/1/2019</td>
-                                <td>5/1/2019</td>
-                            </tr>
-                            <tr onclick="window.location='edit-order.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>1/1/2019</td>
-                                <td>5/1/2019</td>
-                            </tr>
-                            <tr onclick="window.location='edit-order.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>1/1/2019</td>
-                                <td>5/1/2019</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                        <table class="table" cellspacing="0">
-                            <thead style="background: #E2DEDE">
-                            <tr>
-                                <th>STT</th>
-                                <th>Mã đơn hàng</th>
-                                <th>Sản phẩm</th>
-                                <th>Ngày đặt</th>
-                                <th>Ngày giao</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr onclick="window.location='edit-order-1.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>1/1/2019</td>
-                                <td>5/1/2019</td>
-                            </tr>
-                            <tr onclick="window.location='edit-order-1.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>1/1/2019</td>
-                                <td>5/1/2019</td>
-                            </tr>
-                            <tr onclick="window.location='edit-order-1.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>1/1/2019</td>
-                                <td>5/1/2019</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                        <table class="table" cellspacing="0">
-                            <thead style="background: #E2DEDE">
-                            <tr>
-                                <th>STT</th>
-                                <th>Mã đơn hàng</th>
-                                <th>Sản phẩm</th>
-                                <th>Ngày đặt</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr onclick="window.location='edit-order-1.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>1/1/2019</td>
-                            </tr>
-                            <tr onclick="window.location='edit-order-1.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>1/1/2019</td>
-                            </tr>
-                            <tr onclick="window.location='edit-order-1.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>1/1/2019</td>
-                            </tr>
-                            <tr>
-                                <td onclick="window.location='add-order-1.html';"><i class="fas fa-plus"></i> &nbsp&nbsp Thêm</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+                 <!------------------------------------------->
+                <% if(limitPage > 2) {%>
+                    <% if(currentPage < limitPage - 1) { %>
+                        <li class="page-item"><a class="page-link" href= <%='/admin/order.html?&page=' + (parseInt(currentPage) + 1).toString() %> ><%= parseInt(currentPage) + 1 %></a></li>
+                    <% }else { %>
+                        <li class="page-item"><a class="page-link" href= <%='/admin/order.html?&page=' + (parseInt(limitPage) - 1).toString() %> ><%= parseInt(limitPage) - 1 %></a></li>
+                    <% } %>
+                <% }%>
+
+                 <!------------------------------------------->
+                <% if(limitPage > 1) { %>
+                    <% if(currentPage < limitPage - 2) { %>
+                        <li class="page-item"><a class="page-link" href= <%='/admin/order.html?&page=' + (parseInt(currentPage)  + 2).toString() %> ><%= parseInt(currentPage) + 2 %></a></li>
+                    <% }else { %>
+                        <li class="page-item"><a class="page-link" href= <%='/admin/order.html?&page=' + limitPage %> ><%= limitPage%></a></li>
+                    <% } %>
+                <% } %>
+                 <!------------------------------------------->
+                <% if(currentPage < limitPage) { %>
+                    
+                    <li class="page-item"><a class="page-link" href= <%='/admin/order.html?&page=' + (parseInt(currentPage) + 1)%> >Next</a></li>                            
+                <% }else { %>
+                    
+                    <li class="page-item"><a class="page-link" href= <%='/admin/order.html?&page=' + limitPage %> >Next</a></li>
+                <% } %>
+              
+            </ul>
+          </nav>
     </div>
-</section>
+</div>

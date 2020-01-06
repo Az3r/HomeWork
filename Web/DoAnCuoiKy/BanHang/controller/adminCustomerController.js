@@ -13,6 +13,11 @@ class adminCustomerBus
     {
         bus.customerDetail(req, res, next);
     }
+
+    submitEditAccount(req, res, next)
+    {
+        bus.submitEditAccount(req, res, next);
+    }
 }
 
 module.exports = adminCustomerBus;

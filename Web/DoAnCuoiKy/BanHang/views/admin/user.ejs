@@ -14,73 +14,73 @@
             </tr>
             </thead>
             <tbody>
-
-                <tr onclick="window.location='edit-user.html';">
-                    <td>1</td>
-                    <td>acbd</td>
-                    <td>acbd</td>
-                    <td>acbd</td>
-                    <td>********</td>
-                    <td>acbd@gmail.com</td>
-                    <td><i style="margin: 0 2px;" class="fa fa-edit"></i><i style="margin: 0 2px;" class="fa fa-lock"></i><i style="margin: 0 2px;" class="fa fa-unlock"></i></td>
-                </tr>
-                <tr onclick="window.location='edit-user.html';">
-                    <td>1</td>
-                    <td>acbd</td>
-                    <td>acbd</td>
-                    <td>acbd</td>
-                    <td>********</td>
-                    <td>acbd@gmail.com</td>
-                </tr>
-                <tr onclick="window.location='edit-user.html';">
-                    <td>1</td>
-                    <td>acbd</td>
-                    <td>acbd</td>
-                    <td>acbd</td>
-                    <td>********</td>
-                    <td>acbd@gmail.com</td>
-                </tr>
-                <tr onclick="window.location='edit-user.html';">
-                    <td>1</td>
-                    <td>acbd</td>
-                    <td>acbd</td>
-                    <td>acbd</td>
-                    <td>********</td>
-                    <td>acbd@gmail.com</td>
-                </tr>
-                <tr onclick="window.location='edit-user.html';">
-                    <td>1</td>
-                    <td>acbd</td>
-                    <td>acbd</td>
-                    <td>acbd</td>
-                    <td>********</td>
-                    <td>acbd@gmail.com</td>
-                </tr>
-                <tr onclick="window.location='edit-user.html';">
-                    <td>1</td>
-                    <td>acbd</td>
-                    <td>acbd</td>
-                    <td>acbd</td>
-                    <td>********</td>
-                    <td>acbd@gmail.com</td>
-                </tr>
-                <tr onclick="window.location='edit-user.html';">
-                    <td>1</td>
-                    <td>acbd</td>
-                    <td>acbd</td>
-                    <td>acbd</td>
-                    <td>********</td>
-                    <td>acbd@gmail.com</td>
-                </tr>
-                <tr onclick="window.location='edit-user.html';">
-                    <td>1</td>
-                    <td>acbd</td>
-                    <td>acbd</td>
-                    <td>acbd</td>
-                    <td>********</td>
-                    <td>acbd@gmail.com</td>
-                </tr>
+                
+                <% danhsach.rows.forEach(function(user){%>               
+                    <tr>
+                        <td><%= i %></td>
+                        <td><%= user.username %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.lastname %></td>
+                        <td><%= user.name %></td>
+                        <td><%= user.status %></td>
+                        <% if (user.status == "ban") { %>
+                        <td><a style="margin: 0 2px;"  href=<%= '/admin/edit-user.html?userid=' + user.id %> ><i class="fa fa-edit" ></i></a><a style="margin: 0 2px;" href=<%= '/admin/edit-user.html?unlockid=' + user.id %> ><i  class="fa fa-unlock" ></i></a>
+                        <% } else {%>
+                            <td><a style="margin: 0 2px;"  href=<%= '/admin/edit-user.html?userid=' + user.id %> ><i class="fa fa-edit" ></i></a><a style="margin: 0 2px;" href=<%= '/admin/edit-user.html?banid=' + user.id %> ><i  class="fa fa-lock" ></i></a>
+        
+                        <% } %>
+                    </tr>
+                    <% i += 1 %>
+                <% }); %>
             </tbody>
         </table>
+
+        <nav aria-label="Page navigation example" style="margin: 5px;">
+            <ul class="pagination">
+                <% if(currentPage > 1) { %>
+                    <li class="page-item"><a class="page-link" href= <%= '/admin/user.html?page=' + (parseInt(currentPage) - 1)%> >Previous</a></li>
+                <% }else { %>
+                    <li class="page-item"><a class="page-link" href= <%= '/admin/user.html' %> >Previous</a></li>
+                <% } %>    
+                <!------------------------------------------->
+                <% if(limitPage > 2) {%>
+                    <% if(currentPage < limitPage - 2) { %>
+                        <li class="page-item"><a class="page-link" href= <%='/admin/user.html?&page='  + currentPage %> ><%= currentPage %></a></li>
+                    <% }else { %>                                                           
+                        <li class="page-item"><a class="page-link" href= <%='/admin/user.html?&page=' + (parseInt(limitPage) - 2).toString() %> ><%= parseInt(limitPage) - 2 %></a></li>                               
+                    <% } %>
+                <%} else{%>
+                    <li class="page-item"><a class="page-link" href= <%='/admin/user.html?&page=1' %> >1</a></li>
+                <%}%>
+
+                 <!------------------------------------------->
+                <% if(limitPage > 2) {%>
+                    <% if(currentPage < limitPage - 1) { %>
+                        <li class="page-item"><a class="page-link" href= <%='/admin/user.html?&page=' + (parseInt(currentPage) + 1).toString() %> ><%= parseInt(currentPage) + 1 %></a></li>
+                    <% }else { %>
+                        <li class="page-item"><a class="page-link" href= <%='/admin/user.html?&page=' + (parseInt(limitPage) - 1).toString() %> ><%= parseInt(limitPage) - 1 %></a></li>
+                    <% } %>
+                <% }%>
+
+                 <!------------------------------------------->
+                <% if(limitPage > 1) { %>
+                    <% if(currentPage < limitPage - 2) { %>
+                        <li class="page-item"><a class="page-link" href= <%='/admin/user.html?&page=' + (parseInt(currentPage)  + 2).toString() %> ><%= parseInt(currentPage) + 2 %></a></li>
+                    <% }else { %>
+                        <li class="page-item"><a class="page-link" href= <%='/admin/user.html?&page=' + limitPage %> ><%= limitPage%></a></li>
+                    <% } %>
+                <% } %>
+                 <!------------------------------------------->
+                <% if(currentPage < limitPage) { %>
+                    
+                    <li class="page-item"><a class="page-link" href= <%='/admin/user.html?&page=' + (parseInt(currentPage) + 1)%> >Next</a></li>                            
+                <% }else { %>
+                    
+                    <li class="page-item"><a class="page-link" href= <%='/admin/user.html?&page=' + limitPage %> >Next</a></li>
+                <% } %>
+              
+            </ul>
+          </nav>
+
     </div>
 </div>

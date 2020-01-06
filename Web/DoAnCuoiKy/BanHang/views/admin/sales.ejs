@@ -3,7 +3,7 @@
     <div class="col">
         <div class="card shadow">
             <div class="card-header py-3">
-                <p class="text-primary m-0 font-weight-bold">Thống kê top 10&nbsp;</p>
+                <p class="text-primary m-0 font-weight-bold">Quản lý - thống kê gian hàng &nbsp;</p>
             </div>
             <div class="card-body">
                 <div class="row md-1">
@@ -24,9 +24,9 @@
             <div class="col-md-12">
                 <nav>
                     <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Gian hàng 1</a>
-                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Gian hàng 2</a>
-                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Gian hàng 3</a>
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Theo loại sản phẩm</a>
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Theo thương hiệu</a>
+                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Theo danh mục</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -35,34 +35,22 @@
                             <thead style="background: #E2DEDE">
                             <tr>
                                 <th>STT</th>
-                                <th>Mã sản phẩm</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Đơn giá</th>
-                                <th>Doanh số</th>
+                                <th>Loại sản phẩm</th>
+                                <th>Số lượng sản phẩm</th>
+                                <th>Lợi nhuận</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr onclick="window.location='edit-order.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>$1299</td>
-                                <td>12</td>
-                            </tr>
-                            <tr onclick="window.location='edit-order.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>$1299</td>
-                                <td>12</td>
-                            </tr>
-                            <tr onclick="window.location='edit-order.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>$1299</td>
-                                <td>12</td>
-                            </tr>
+                                <% for(let i = 0; i < tagname.length; i++) { %>
+                                    <tr>
+                                        <td><%= i + 1 %></td>
+                                        <td><%= tagname[i] %></td>
+                                        <td style="text-align: center;"><%= tagamount[i] %></td>
+                                        <td><%= tagprofit[i] %></td>
+                                        <td><a style="margin: 0 2px;"  href=<%= '/admin/manage-product.html?tagid=' + i %> ><i class="fa fa-eye" ></i></a>
+                                    </tr>
+                                <% } %>
                             </tbody>
                         </table>
                     </div>
@@ -71,34 +59,22 @@
                             <thead style="background: #E2DEDE">
                             <tr>
                                 <th>STT</th>
-                                <th>Mã sản phẩm</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Đơn giá</th>
-                                <th>Doanh số</th>
+                                <th>Tên thương hiệu</th>
+                                <th>Số lượng sản phẩm</th>
+                                <th>Lợi nhuận</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr onclick="window.location='edit-order.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>$1299</td>
-                                <td>12</td>
-                            </tr>
-                            <tr onclick="window.location='edit-order.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>$1299</td>
-                                <td>12</td>
-                            </tr>
-                            <tr onclick="window.location='edit-order.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>$1299</td>
-                                <td>12</td>
-                            </tr>
+                                <% for(let i = 0; i < brandname.length; i++) { %>
+                                    <tr>
+                                        <td><%= i + 1 %></td>
+                                        <td><%= brandname[i] %></td>
+                                        <td style="text-align: center;"><%= brandamount[i] %></td>
+                                        <td><%= brandprofit[i] %></td>
+                                        <td><a style="margin: 0 2px;"  href=<%= '/admin/manage-product.html?brandid=' + i %> ><i class="fa fa-eye" ></i></a>
+                                    </tr>
+                                <% } %>
                             </tbody>
                         </table>
                     </div>
@@ -107,34 +83,22 @@
                             <thead style="background: #E2DEDE">
                             <tr>
                                 <th>STT</th>
-                                <th>Mã sản phẩm</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Đơn giá</th>
-                                <th>Doanh số</th>
+                                <th>Tên danh mục</th>
+                                <th>Số lượng sản phẩm</th>
+                                <th>Lợi nhuận</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr onclick="window.location='edit-order.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>$1299</td>
-                                <td>12</td>
-                            </tr>
-                            <tr onclick="window.location='edit-order.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>$1299</td>
-                                <td>12</td>
-                            </tr>
-                            <tr onclick="window.location='edit-order.html';">
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>Sữa chua</td>
-                                <td>$1299</td>
-                                <td>12</td>
-                            </tr>
+                                <% for(let i = 0; i < catalogname.length; i++) { %>
+                                    <tr>
+                                        <td><%= i + 1 %></td>
+                                        <td><%= catalogname[i] %></td>
+                                        <td style="text-align: center;"><%= catalogamount[i] %></td>
+                                        <td><%= catalogprofit[i] %></td>
+                                        <td><a style="margin: 0 2px;"  href=<%= '/admin/manage-product.html?catalogid=' + i %> ><i class="fa fa-eye" ></i></a>
+                                    </tr>
+                                <% } %>
                             </tbody>
                         </table>
                     </div>

@@ -62,6 +62,14 @@ class CheckoutHandler
                                 if(e)
                                     return console.log(e);
 
+                                pool.query("SELECT price, profit FROM product WHERE id = " + result.rows[i].productid)
+                                .then((list) => 
+                                {
+                                    const newProfit = parseInt(list.rows[0].profit) + result.rows[i].number * parseInt(list.rows[0].price);
+
+                                    pool.query("UPDATE product SET profit = " + newProfit + " WHERE id = " + result.rows[i].productid);
+                                });
+
                                 if(i == result.rowCount - 1)
                                 {
                                     pool.query("DELETE FROM usercart WHERE userid = " + req.user.id, function(errr){

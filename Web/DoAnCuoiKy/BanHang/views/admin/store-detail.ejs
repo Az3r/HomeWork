@@ -1,0 +1,82 @@
+<div style="margin-left: 30%; margin-right: 30%; margin-top: 3%; font-size: large" class="alert alert-success text-center" role="alert"><span><strong><%= 'Gian hàng ' + name %></strong>.</span></div><br><br>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table" cellspacing="0">
+            <thead style="background: #E2DEDE">
+            <tr>
+                <th>STT</th>
+                <th>Mã sản phẩm</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá</th>
+                <th>Còn lại</th>
+                <th style="text-align: center; width: 300px;">Mô tả</th>
+                <th>Lượt xem</th>
+                <th>Lợi nhuận</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                <% danhsach.rows.forEach(function(item){%>               
+                  <tr>
+                      <td><%= i %></td>
+                      <td><%= item.id %></td>
+                      <td><%= item.name %></td>
+                      <td><%= item.price %></td>
+                      <td><%= item.amount %></td>
+                      <td><%= item.description %></td>
+                      <td><%= item.view %></td>
+                      <td><%= item.profit %></td>
+                      <td><a style="margin: 0 2px;"  href=<%= '/admin/edit-product.html?productid=' + item.id %> ><i class="fa fa-edit" ></i></a>
+                  </tr>
+                <% i+= 1 %>
+                <% }); %>
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example" style="margin: 5px;">
+            <ul class="pagination">
+                <% if(currentPage > 1) { %>
+                    <li class="page-item"><a class="page-link" href= <%= '/admin' + fullURL + '&page=' + (parseInt(currentPage) - 1)%> >Previous</a></li>
+                <% }else { %>
+                    <li class="page-item"><a class="page-link" href= <%= '/admin' + fullURL %> >Previous</a></li>
+                <% } %>    
+                <!------------------------------------------->
+                <% if(limitPage > 2) {%>
+                    <% if(currentPage < limitPage - 2) { %>
+                        <li class="page-item"><a class="page-link" href= <%= '/admin' + fullURL + '&page='  + currentPage %> ><%= currentPage %></a></li>
+                    <% }else { %>                                                           
+                        <li class="page-item"><a class="page-link" href= <%= '/admin' + fullURL + '&page=' + (parseInt(limitPage) - 2).toString() %> ><%= parseInt(limitPage) - 2 %></a></li>                               
+                    <% } %>
+                <%} else{%>
+                    <li class="page-item"><a class="page-link" href= <%='/admin/user.html?&page=1' %> >1</a></li>
+                <%}%>
+
+                 <!------------------------------------------->
+                <% if(limitPage > 2) {%>
+                    <% if(currentPage < limitPage - 1) { %>
+                        <li class="page-item"><a class="page-link" href= <%= '/admin' + fullURL + '&page=' + (parseInt(currentPage) + 1).toString() %> ><%= parseInt(currentPage) + 1 %></a></li>
+                    <% }else { %>
+                        <li class="page-item"><a class="page-link" href= <%= '/admin' + fullURL + '&page=' + (parseInt(limitPage) - 1).toString() %> ><%= parseInt(limitPage) - 1 %></a></li>
+                    <% } %>
+                <% }%>
+
+                 <!------------------------------------------->
+                <% if(limitPage > 1) { %>
+                    <% if(currentPage < limitPage - 2) { %>
+                        <li class="page-item"><a class="page-link" href= <%= '/admin' + fullURL + '&page=' + (parseInt(currentPage)  + 2).toString() %> ><%= parseInt(currentPage) + 2 %></a></li>
+                    <% }else { %>
+                        <li class="page-item"><a class="page-link" href= <%= '/admin' + fullURL + '&page=' + limitPage %> ><%= limitPage%></a></li>
+                    <% } %>
+                <% } %>
+                 <!------------------------------------------->
+                <% if(currentPage < limitPage) { %>
+                    
+                    <li class="page-item"><a class="page-link" href= <%= '/admin' + fullURL + '&page=' + (parseInt(currentPage) + 1)%> >Next</a></li>                            
+                <% }else { %>
+                    
+                    <li class="page-item"><a class="page-link" href= <%= '/admin' + fullURL + '&page=' + limitPage %> >Next</a></li>
+                <% } %>
+              
+            </ul>
+          </nav>
+    </div>
+</div>

@@ -15,63 +15,46 @@
 
             <!-- edit form column -->
             <div class="col-md-9 personal-info">
-                <h3>Thông tin chi tiết khách hàng</h3>
-
-                <form class="form-horizontal" role="form">
+               
+                <p style="color: red"><%= nofi%></p>
+                <form class="form-horizontal" role="form" method="POST" action= <%= "/admin/edit-user.html?userid=" + danhsach.id %> >
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Họ và tên đệm:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" value="Nguyễn Văn">
+                            <input name="newlastname" class="form-control" type="text" placeholder= <%= danhsach.lastname %>>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Tên:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" value="An">
+                            <input name="newname" class="form-control" type="text" placeholder=<%= danhsach.name %> >
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Công ty:</label>
-                        <div class="col-lg-8">
-                            <input class="form-control" type="text" value="">
-                        </div>
-                    </div>
+                    
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Email:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" value="janesemail@gmail.com">
+                            <input name="newemail" class="form-control" type="text" placeholder=<%= danhsach.email %> >
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">SĐT:</label>
-                        <div class="col-lg-8">
-                            <input class="form-control" type="text" value="0125458856">
-                        </div>
-                    </div>
+                    
                     <div class="form-group">
                         <label class="col-md-3 control-label">Tên đăng nhập:</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" value="janeuser">
+                            <input name="newusername" class="form-control" type="text" placeholder=<%= danhsach.username %> >
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Mật khẩu:</label>
+                        <label class="col-md-3 control-label">Mật khẩu mới:</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="password" value="11111122333">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Địa chỉ:</label>
-                        <div class="col-md-8">
-                            <input class="form-control" type="password" value="125 CMT8 Tp.HCM">
+                            <input name="newpassword" class="form-control" type="password">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label"></label>
                         <div class="col-md-8">
-                            <input type="button" class="btn btn-primary" value="Lưu thay đổi">
-                            <span></span>
-                            <input type="reset" class="btn btn-primary" value="Hủy">
+                            <button type="submit" class="btn btn-primary" >Lưu thay đổi</button>
+                            <a href="/admin/user.html"><input type="reset" class="btn btn-primary" value="Hủy"></a>
                         </div>
                     </div>
                 </form>

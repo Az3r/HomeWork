@@ -1,0 +1,63 @@
+<div class="container" style="background: #f2f2f2;">
+    <div class="col-sm-12">
+        <h1><%= 'Mã sản phẩm: ' + masp%> </h1>
+        <hr>
+        <div class="row">
+            <!-- left column -->
+           
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+               
+                <form class="form-horizontal" role="form" method="POST" action=<%= "/admin/edit-product.html?productid=" + masp %> >
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Tên sản phẩm</label>
+                        <div class="col-lg-8">
+                            <input name="newname" class="form-control" type="text" placeholder=" <%= danhsach.rows[0].name %> ">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Giá</label>
+                        <div class="col-lg-8">
+                            <input name="newprice" class="form-control" type="text"  placeholder=" <%= danhsach.rows[0].price %> " >
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Số lượng còn lại</label>
+                        <div class="col-lg-8">
+                            <input name="newamount" class="form-control" type="number" min="0"  placeholder=" <%= danhsach.rows[0].amount %> ">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Mô tả</label>
+                        <div class="col-md-8">
+                           <!-- <input name="newdescription" class="form-control" type="text"  value=" <%= danhsach.rows[0].description %> "> -->
+                           <textarea name="newdescription" style="display: block;
+                           width: 100%;
+                           height: auto;
+                           padding: .375rem .75rem;
+                           font-size: 1rem;
+                           font-weight: 400;
+                           line-height: 1.5;
+                           color: #6e707e;
+                           background-color: #fff;
+                           
+                           border: 1px solid #d1d3e2;
+                           border-radius: .35rem;"><%= danhsach.rows[0].description %></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-8">
+                            <button type="submit" class="btn btn-primary" >Lưu thay đổi</button>
+                           
+                            <button  class="btn btn-primary" ><a style="color: white;" href="/admin/dashboard.html">Hủy</a></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
