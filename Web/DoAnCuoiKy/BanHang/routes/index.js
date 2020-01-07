@@ -8,21 +8,6 @@ let control = new generalControl();
 const userControl = new userController();
 
 
-/* GET home page. */
-router.get(['/', '/index.html'], function(req, res, next) {
-    control.home(req, res, next);
-      
-});
- 
-//-------------END HOME PAGE--------------------------
-router.get('/shop.html', function(req, res, next) {
-  control.shop(req, res, next);
-});
-
-
-router.get('/contact-us.html', function(req, res, next) {
-  control.contact(req, res, next);
-});
 
 //--------------------- ACCOUNT ----------------------------
 router.get('/acount.html', function(req, res, next) {
